@@ -1,2 +1,5 @@
 # AdventOfCode_2022
-Advent Of Code 2022 using Javascript
+
+https://adventofcode.com/
+
+This is my first Advent Of Code and I will be using Vanilla Javascript.
