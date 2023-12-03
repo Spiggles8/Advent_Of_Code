@@ -1,7 +1,13 @@
-# AdventOfCode_2022
+# AdventOfCode
 
 https://adventofcode.com/
 
+2023
+This will be my 2nd attempt at Advent of Code. 
+I will be using C# in Visual Studio code. 
+
+
+2022
 This is my first Advent Of Code and I will be using Vanilla Javascript.
 I am currently using Visual Studio Code and in the terminal running "node app.js" to show the solution.
 
