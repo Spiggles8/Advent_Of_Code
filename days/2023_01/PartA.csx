@@ -1,25 +1,41 @@
-// Input.csx
 using System;
 using System.IO;
+using System.Linq;
 
-void ReadFile(string fileName)
+try
 {
-    string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
+    // Read all lines from the file and store them in an array of strings.
+    string filePath = Path.Combine(Environment.CurrentDirectory, "Input.txt");
+    string[] lines = File.ReadAllLines(filePath);
 
-    try
+    // Go through each line in the array to pull out digits from the string.
+    int totalSum = 0;
+    foreach (string line in lines)
     {
-        string[] lines = File.ReadAllLines(filePath);
+        // Extract all numeric sequences from the string
+        var numericSequences = line
+            .Where(char.IsDigit)
+            .Select(c => int.Parse(c.ToString()))
+            .ToArray();
 
-        foreach (string line in lines)
+        // Calculate the sum of the first and last digits for each sequence
+        int lineSum = 0;
+        if (numericSequences.Length > 0)
         {
-            Console.WriteLine(line);
+            lineSum = numericSequences[0] * 10 + numericSequences[^1];
         }
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine("An error occurred: " + e.Message);
-    }
-}
 
-// Call the function with the desired file name
-ReadFile("Input.txt");
+        // Print the line and its sum
+        Console.WriteLine($"Line: {line}, Sum: {lineSum}");
+
+        // Accumulate the sum for all lines
+        totalSum += lineSum;
+    }
+
+    // Print the total sum
+    Console.WriteLine($"Total Sum: {totalSum}");
+}
+catch (Exception e)
+{
+    Console.WriteLine("An error occurred: " + e.Message);
+}
